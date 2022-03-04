@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>15866170890-od21cu5g3gdti4g2gciji51eccrddijq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.15866170890-od21cu5g3gdti4g2gciji51eccrddijq</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>15866170890-tp8cdmk50ovvi5rgqhpv2aphe01feapo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAfi7dupq1lWL64jmndVFY3uTQ8NQe81CA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>15866170890</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.pineapple</string>
+	<key>PROJECT_ID</key>
+	<string>fruit-eater-27282</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fruit-eater-27282.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:15866170890:ios:9939b30ad3436fd638d9f3</string>
+</dict>
+</plist>
