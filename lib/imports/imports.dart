@@ -1,4 +1,6 @@
 //------------------------COMPONENTS----------------------------------------------
+export '../components/background_image.dart';
+export '../components/button_widget.dart';
 
 //------------------------LIBRARIES----------------------------------------------
 export 'package:flutter/material.dart';
