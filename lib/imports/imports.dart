@@ -4,6 +4,7 @@ export '../components/button_widget.dart';
 
 //------------------------LIBRARIES----------------------------------------------
 export 'package:flutter/material.dart';
+export 'package:firebase_core/firebase_core.dart';
 
 //------------------------SCREENS------------------------------------------------
 export 'package:pineapple/screens/welcome.dart';

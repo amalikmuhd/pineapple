@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:firebase_database/firebase_database.dart';
+
 import '../imports/imports.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -8,6 +12,12 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  void databaseCalled() {
+    DatabaseReference _refDatabase =
+        FirebaseDatabase.instance.ref().child("test");
+    _refDatabase.set("Hi Mom ${Random().nextInt(1000000)}");
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,7 +32,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             const Spacer(),
             ButtonWidget(
               size: size,
-              onPressed: () {},
+              onPressed: () {
+                databaseCalled();
+              },
             ),
             const Spacer(),
           ],
