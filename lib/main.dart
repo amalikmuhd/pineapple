@@ -5,11 +5,6 @@ Future<void> main() async {
   runApp(_AppState());
 }
 
-//  WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform,
-//   );
-
 class _AppState extends StatelessWidget {
   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 

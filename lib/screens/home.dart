@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pineapple/components/rounded_button_widget.dart';
-import 'package:pineapple/utils/constants.dart';
+import '../imports/imports.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -26,10 +24,22 @@ class _HomeScreenState extends State<HomeScreen> {
           foregroundColor: kPrimaryColor,
           shadowColor: Colors.transparent,
           backgroundColor: Colors.transparent,
-          actions: const [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Icon(Icons.logout),
+          actions: [
+            InkWell(
+              onTap: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) => const WelcomeScreen()));
+                  // ignore: empty_catches
+                } catch (e) {}
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Icon(Icons.logout),
+              ),
             ),
           ],
         ),

@@ -1,6 +1,4 @@
-import 'dart:math';
-
-import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../imports/imports.dart';
 
@@ -12,34 +10,61 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  void databaseCalled() {
-    DatabaseReference _refDatabase =
-        FirebaseDatabase.instance.ref().child("test");
-    _refDatabase.set("Hi Mom ${Random().nextInt(1000000)}");
-  }
-
+  Container loading = Container(
+      color: Colors.white,
+      child: const Center(
+          child: SpinKitRipple(
+        color: Colors.red,
+        size: 50.0,
+      )));
+  bool loadingSet = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: BackgroundWidget(
-        size: size,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(),
-            const Text("Welcome Pineapple"),
-            const Spacer(),
-            ButtonWidget(
+    return loadingSet
+        ? loading
+        : Scaffold(
+            body: BackgroundWidget(
               size: size,
-              onPressed: () {
-                databaseCalled();
-              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Spacer(),
+                  const Text("Welcome Fruit Eater"),
+                  const Spacer(),
+                  ButtonWidget(
+                    size: size,
+                    onPressed: () async {
+                      setState(() => loadingSet = true);
+
+                      try {
+                        UserCredential _cred =
+                            await FirebaseAuth.instance.signInAnonymously();
+                        User? _user = _cred.user;
+
+                        if (_user == null) {
+                          // ignore: avoid_print
+                          print("There is a problem signing in");
+                          setState(() => loadingSet = false);
+                        } else {
+                          setState(() => loadingSet = false);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (builder) => const HomeScreen()));
+                        }
+                        // ignore: avoid_print
+                        print(_user?.uid);
+                      } catch (e) {
+                        // ignore: avoid_print
+                        print(e.toString());
+                      }
+                    },
+                  ),
+                  const Spacer(),
+                ],
+              ),
             ),
-            const Spacer(),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
