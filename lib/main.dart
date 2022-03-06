@@ -17,7 +17,7 @@ class _AppState extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             // ignore: avoid_print
-            print("you have an error ${snapshot.error.toString()}");
+            // print("you have an error ${snapshot.error.toString()}");
             return const Text("Something weng wrong");
           } else if (snapshot.hasData) {
             return const WelcomeScreen();

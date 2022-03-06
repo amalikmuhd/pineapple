@@ -18,19 +18,22 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/button_background_image.png"))),
       width: size.width * 0.7,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
+        // borderRadius: BorderRadius.circular(30),
         child: ElevatedButton(
           child: Text(
             text,
             style: const TextStyle(fontSize: 16),
           ),
           style: ElevatedButton.styleFrom(
-              primary: color,
+              primary: Colors.transparent,
               padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 40)),
+                  const EdgeInsets.symmetric(vertical: 25, horizontal: 40)),
           onPressed: onPressed,
         ),
       ),

@@ -1,5 +1,3 @@
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import '../imports/imports.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -25,7 +23,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ? loading
         : Scaffold(
             body: BackgroundWidget(
-              size: size,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -44,7 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                         if (_user == null) {
                           // ignore: avoid_print
-                          print("There is a problem signing in");
+                          print("There is a problem signing");
                           setState(() => loadingSet = false);
                         } else {
                           setState(() => loadingSet = false);

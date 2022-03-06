@@ -8,41 +8,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int generateImageNumber = 1;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      width: double.infinity,
-      height: size.height,
-      decoration: const BoxDecoration(
-          // color: kPrimaryColor,
-          image: DecorationImage(
-              image: AssetImage(kbackground), fit: BoxFit.cover)),
+    return BackgroundWidget(
+      imagePath: kbackground,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          foregroundColor: kPrimaryColor,
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          actions: [
-            InkWell(
-              onTap: () async {
-                try {
-                  await FirebaseAuth.instance.signOut();
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (builder) => const WelcomeScreen()));
-                  // ignore: empty_catches
-                } catch (e) {}
-              },
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Icon(Icons.logout),
-              ),
-            ),
-          ],
-        ),
+        appBar: appBar(),
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -59,15 +34,48 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Container changableImage(Size size) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      width: double.infinity,
-      height: size.height * 0.3,
-      decoration: const BoxDecoration(
-          // color: kPrimaryColor,
-          image: DecorationImage(image: AssetImage(kQuestionMark))),
+  AppBar appBar() {
+    return AppBar(
+      foregroundColor: kPrimaryColor,
+      shadowColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
+      actions: [
+        InkWell(
+          onTap: () async {
+            try {
+              await FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (builder) => const WelcomeScreen()));
+              // ignore: empty_catches
+            } catch (e) {}
+          },
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Icon(
+              Icons.logout,
+              color: Colors.yellow,
+            ),
+          ),
+        ),
+      ],
     );
+  }
+
+  TVContainer changableImage(Size size) {
+    return TVContainer(
+        child: Align(
+      alignment: Alignment.centerLeft / 5,
+      child: Container(
+        margin: const EdgeInsets.only(top: 30),
+        width: MediaQuery.of(context).size.width * 0.35,
+        child: Image.asset(
+          "assets/images/fruit" "$generateImageNumber" ".png",
+          fit: BoxFit.fitWidth,
+        ),
+      ),
+    ));
   }
 
   Row bottomWidget(Size size) {
@@ -76,7 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
         Expanded(
           child: RoundedButtonWidget(
             size: size,
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                int random = Random().nextInt(8) + 1;
+                generateImageNumber = random;
+              });
+            },
             icon: Image.asset(
               kFruit,
               width: 90,
@@ -87,7 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
           child: RoundedButtonWidget(
             size: size,
             color: Colors.green,
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                generateImageNumber = 0;
+              });
+            },
             icon: Image.asset(
               kEat,
               width: 90,
@@ -96,5 +113,28 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
+  }
+
+  int generateRandomNumber() {
+    return 1;
+  }
+
+  int add() {
+    return 8;
+  }
+
+  int reduce() {
+    return 0;
+  }
+}
+
+class AppBarWidgetNew extends StatelessWidget {
+  const AppBarWidgetNew({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
