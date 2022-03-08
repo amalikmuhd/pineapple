@@ -10,21 +10,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int generateImageNumber = 1;
 
-  // CollectionReference users = FirebaseFirestore.instance.collection('fruit');
-
-  // Future<void> addUser() {
-  //   // Call the user's CollectionReference to add a new user
-  //   return users
-  //       .add({
-  //         'full_name': "fullName", // John Doe
-  //       })
-  //       // ignore: avoid_print
-  //       // ignore: avoid_print
-  //       .then((value) => print("User Added"))
-  //       // ignore: avoid_print
-  //       .catchError((error) => print("Failed to add user: $error"));
-  // }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -63,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   context,
                   MaterialPageRoute(
                       builder: (builder) => const WelcomeScreen()));
-              // ignore: empty_catches
             } catch (e) {}
           },
           child: const Padding(
@@ -103,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(() {
                 int random = Random().nextInt(8) + 1;
                 generateImageNumber = random;
-                // addUser();
+                updateFruits(number: generateImageNumber.toString());
               });
             },
             icon: Image.asset(
@@ -119,6 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               setState(() {
                 generateImageNumber = 0;
+                updateFruits(number: generateImageNumber.toString());
               });
             },
             icon: Image.asset(
@@ -131,7 +116,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  int generateRandomNumber() {
-    return 1;
+  Future<bool> updateFruits({
+    String? number,
+  }) async {
+    try {
+      await Firebase.initializeApp();
+      final firestoreInstance = FirebaseFirestore.instance;
+      CollectionReference fruitReference =
+          firestoreInstance.collection('fruit');
+      await fruitReference.doc("uHgoYXpRz4RFLrpOv8mv").set({
+        'number': number,
+      });
+      return true;
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+      return false;
+    }
   }
 }

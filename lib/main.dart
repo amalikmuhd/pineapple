@@ -1,31 +1,31 @@
 import 'package:pineapple/imports/imports.dart';
 
-Future<void> main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(_AppState());
+  await Firebase.initializeApp();
+  runApp(const MaterialApp(
+      debugShowCheckedModeBanner: false, home: WelcomeScreen()));
 }
 
-class _AppState extends StatelessWidget {
-  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+// class _AppState extends StatelessWidget {
+//   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: FutureBuilder(
-        future: _fbApp,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            // ignore: avoid_print
-            // print("you have an error ${snapshot.error.toString()}");
-            return const Text("Something weng wrong");
-          } else if (snapshot.hasData) {
-            return const WelcomeScreen();
-          } else {
-            return const CircularProgressIndicator();
-          }
-        },
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: FutureBuilder(
+//         future: _fbApp,
+//         builder: (context, snapshot) {
+//           if (snapshot.hasError) {
+//             return const Text("Something weng wrong");
+//           } else if (snapshot.hasData) {
+//             return const WelcomeScreen();
+//           } else {
+//             return const CircularProgressIndicator();
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }
