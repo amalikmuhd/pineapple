@@ -10,6 +10,21 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int generateImageNumber = 1;
 
+  // CollectionReference users = FirebaseFirestore.instance.collection('fruit');
+
+  // Future<void> addUser() {
+  //   // Call the user's CollectionReference to add a new user
+  //   return users
+  //       .add({
+  //         'full_name': "fullName", // John Doe
+  //       })
+  //       // ignore: avoid_print
+  //       // ignore: avoid_print
+  //       .then((value) => print("User Added"))
+  //       // ignore: avoid_print
+  //       .catchError((error) => print("Failed to add user: $error"));
+  // }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -88,6 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
               setState(() {
                 int random = Random().nextInt(8) + 1;
                 generateImageNumber = random;
+                // addUser();
               });
             },
             icon: Image.asset(
@@ -117,24 +133,5 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int generateRandomNumber() {
     return 1;
-  }
-
-  int add() {
-    return 8;
-  }
-
-  int reduce() {
-    return 0;
-  }
-}
-
-class AppBarWidgetNew extends StatelessWidget {
-  const AppBarWidgetNew({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

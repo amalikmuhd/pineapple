@@ -28,7 +28,7 @@ class ButtonWidget extends StatelessWidget {
         child: ElevatedButton(
           child: Text(
             text,
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(fontFamily: 'River', fontSize: 22),
           ),
           style: ElevatedButton.styleFrom(
               primary: Colors.transparent,

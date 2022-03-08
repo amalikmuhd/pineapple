@@ -1,26 +1,19 @@
 {
   "project_info": {
     "project_number": "15866170890",
+    "firebase_url": "https://fruit-eater-27282-default-rtdb.firebaseio.com",
     "project_id": "fruit-eater-27282",
     "storage_bucket": "fruit-eater-27282.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:15866170890:android:c6964694bfb85f2a38d9f3",
+        "mobilesdk_app_id": "1:15866170890:android:fe2414c341dfcd7a38d9f3",
         "android_client_info": {
-          "package_name": "com.example.pineapple"
+          "package_name": "com.aoomle.pineapple"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "15866170890-tp8cdmk50ovvi5rgqhpv2aphe01feapo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.pineapple",
-            "certificate_hash": "33e928264410126abd2016b83513b40b189a63e7"
-          }
-        },
         {
           "client_id": "15866170890-rck41li3khhdtsvpgrrfc7tgbafgqhcc.apps.googleusercontent.com",
           "client_type": 3
@@ -37,6 +30,13 @@
             {
               "client_id": "15866170890-rck41li3khhdtsvpgrrfc7tgbafgqhcc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "15866170890-od21cu5g3gdti4g2gciji51eccrddijq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pineapple"
+              }
             }
           ]
         }

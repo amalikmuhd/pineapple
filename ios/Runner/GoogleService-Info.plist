@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>15866170890-od21cu5g3gdti4g2gciji51eccrddijq.apps.googleusercontent.com</string>
+	<string>15866170890-vp7u2jpbcds428ldjubemc2si44529io.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.15866170890-od21cu5g3gdti4g2gciji51eccrddijq</string>
+	<string>com.googleusercontent.apps.15866170890-vp7u2jpbcds428ldjubemc2si44529io</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>15866170890-tp8cdmk50ovvi5rgqhpv2aphe01feapo.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.pineapple</string>
+	<string>com.aoomle.pineapple</string>
 	<key>PROJECT_ID</key>
 	<string>fruit-eater-27282</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:15866170890:ios:9939b30ad3436fd638d9f3</string>
+	<string>1:15866170890:ios:365ca00c98c07e8138d9f3</string>
+	<key>DATABASE_URL</key>
+	<string>https://fruit-eater-27282-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

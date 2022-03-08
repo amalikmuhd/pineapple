@@ -27,7 +27,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  const Text("Welcome Fruit Eater"),
+                  const Text(
+                    "Welcome To Fruit Eater",
+                    style: TextStyle(
+                        fontFamily: 'River', fontSize: 34, color: Colors.white),
+                  ),
                   const Spacer(),
                   ButtonWidget(
                     size: size,
