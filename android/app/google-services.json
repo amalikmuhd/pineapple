@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:15866170890:android:fe2414c341dfcd7a38d9f3",
+        "mobilesdk_app_id": "1:15866170890:android:54e03ca97589973a38d9f3",
         "android_client_info": {
-          "package_name": "com.aoomle.pineapple"
+          "package_name": "com.example.pineapple"
         }
       },
       "oauth_client": [

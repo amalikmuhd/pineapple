@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:15866170890:ios:365ca00c98c07e8138d9f3</string>
+	<string>1:15866170890:ios:a5225c3a96f9c67738d9f3</string>
 	<key>DATABASE_URL</key>
 	<string>https://fruit-eater-27282-default-rtdb.firebaseio.com</string>
 </dict>

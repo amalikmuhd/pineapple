@@ -8,6 +8,7 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool loadingSet = false;
   Container loading = Container(
       color: Colors.white,
       child: const Center(
@@ -15,7 +16,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         color: Colors.red,
         size: 50.0,
       )));
-  bool loadingSet = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,30 +36,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ButtonWidget(
                     size: size,
                     onPressed: () async {
+                      //Start loading before we login in user anonymously
                       setState(() => loadingSet = true);
 
-                      try {
-                        UserCredential _cred =
-                            await FirebaseAuth.instance.signInAnonymously();
-                        User? _user = _cred.user;
+                      AuthServices.loginAnonmyous(onPress: () {
+                        //stop loading
+                        setState(() => loadingSet = false);
 
-                        if (_user == null) {
-                          // ignore: avoid_print
-                          print("There is a problem signing");
-                          setState(() => loadingSet = false);
-                        } else {
-                          setState(() => loadingSet = false);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (builder) => const HomeScreen()));
-                        }
-                        // ignore: avoid_print
-                        print(_user?.uid);
-                      } catch (e) {
-                        // ignore: avoid_print
-                        print(e.toString());
-                      }
+                        print("loading");
+                        //push 0 to firestore to reset the fruits
+                        DatabaseServices.updateFruits(number: '0');
+
+                        //navigate to home screen
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => const HomeScreen()));
+                      });
                     },
                   ),
                   const Spacer(),
@@ -69,3 +62,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           );
   }
 }
+
+
+
+    //  try {
+    //                     UserCredential _cred =
+    //                         await FirebaseAuth.instance.signInAnonymously();
+    //                     User? _user = _cred.user;
+
+    //                     if (_user == null) {
+    //                       // ignore: avoid_print
+    //                       print("There is a problem signing");
+    //                       setState(() => loadingSet = false);
+    //                     } else {
+    //                       setState(() => loadingSet = false);
+    //                       //push 0 to firestore to reset the fruits
+    //                       DatabaseServices.updateFruits(number: '0');
+    //                       Navigator.pushReplacement(
+    //                           context,
+    //                           MaterialPageRoute(
+    //                               builder: (builder) => const HomeScreen()));
+    //                     }
+    //                     // ignore: avoid_print
+    //                     print(_user?.uid);
+    //                   } catch (e) {
+    //                     // ignore: avoid_print
+    //                     print(e.toString());
+    //                   }
