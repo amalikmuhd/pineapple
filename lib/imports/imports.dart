@@ -13,7 +13,7 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:pineapple/services/auth.dart';
 export 'package:pineapple/services/database.dart';
-
+export 'package:rflutter_alert/rflutter_alert.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 
 //------------------------SCREENS------------------------------------------------

@@ -8,42 +8,35 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool loadingSet = false;
-  Container loading = Container(
-      color: Colors.white,
-      child: const Center(
-          child: SpinKitRipple(
-        color: Colors.red,
-        size: 50.0,
-      )));
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return loadingSet
-        ? loading
+    return isLoading
+        ? const Loading()
         : Scaffold(
             body: BackgroundWidget(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  const Text(
+                  Text(
                     "Welcome To Fruit Eater",
-                    style: TextStyle(
-                        fontFamily: 'River', fontSize: 34, color: Colors.white),
+                    style: kFontTitleStyle,
+                    textAlign: TextAlign.center,
                   ),
                   const Spacer(),
                   ButtonWidget(
                     size: size,
                     onPressed: () async {
-                      //Start loading before we login in user anonymously
-                      setState(() => loadingSet = true);
+                      //When button is press start loading before we login in user anonymously
+                      setState(() => isLoading = true);
 
-                      AuthServices.loginAnonmyous(onPress: () {
+                      AuthServices.loginAnonmyous(onSuccess: () {
                         //stop loading
-                        setState(() => loadingSet = false);
+                        setState(() => isLoading = false);
 
-                        print("loading");
                         //push 0 to firestore to reset the fruits
                         DatabaseServices.updateFruits(number: '0');
 
@@ -52,6 +45,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (builder) => const HomeScreen()));
+                      }, onError: (e) {
+                        Alert(
+                            context: context,
+                            type: AlertType.error,
+                            title: "Something went wrong",
+                            desc: e,
+                            buttons: [
+                              DialogButton(
+                                  color: Colors.transparent,
+                                  child: const Text("Try Again"),
+                                  onPressed: () => Navigator.pop(context))
+                            ]).show();
+
+                        setState(() => isLoading = false);
                       });
                     },
                   ),
@@ -62,30 +69,3 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           );
   }
 }
-
-
-
-    //  try {
-    //                     UserCredential _cred =
-    //                         await FirebaseAuth.instance.signInAnonymously();
-    //                     User? _user = _cred.user;
-
-    //                     if (_user == null) {
-    //                       // ignore: avoid_print
-    //                       print("There is a problem signing");
-    //                       setState(() => loadingSet = false);
-    //                     } else {
-    //                       setState(() => loadingSet = false);
-    //                       //push 0 to firestore to reset the fruits
-    //                       DatabaseServices.updateFruits(number: '0');
-    //                       Navigator.pushReplacement(
-    //                           context,
-    //                           MaterialPageRoute(
-    //                               builder: (builder) => const HomeScreen()));
-    //                     }
-    //                     // ignore: avoid_print
-    //                     print(_user?.uid);
-    //                   } catch (e) {
-    //                     // ignore: avoid_print
-    //                     print(e.toString());
-    //                   }

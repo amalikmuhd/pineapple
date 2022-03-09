@@ -12,3 +12,15 @@ const kQuestionMark = "assets/images/question-mark.png";
 const kbackground = "assets/images/jg2r_eas6_210318.jpg";
 const kTv = "assets/images/home_background.png";
 const kWelcome = "assets/images/3u5n_jgx6_210408.jpg";
+
+const kFruitKinds = "assets/images/fruit";
+const kFruitExtension = ".png";
+
+//Fonts
+const kCustomFont = 'River';
+
+TextStyle? kFontTitleStyle = const TextStyle(
+  fontFamily: kCustomFont,
+  fontSize: 34,
+  color: Colors.white,
+);

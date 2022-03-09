@@ -25,7 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
               const Spacer(),
               changableImage(size),
               const Spacer(),
-              bottomWidget(size),
+              Row(
+                children: [
+                  generateRandomFruit(size),
+                  makeFruitDisppear(size),
+                ],
+              ),
               const Spacer(),
             ],
           ),
@@ -69,51 +74,51 @@ class _HomeScreenState extends State<HomeScreen> {
         margin: const EdgeInsets.only(top: 30),
         width: MediaQuery.of(context).size.width * 0.35,
         child: Image.asset(
-          "assets/images/fruit" "$generateImageNumber" ".png",
+          kFruitKinds + "$generateImageNumber" + kFruitExtension,
           fit: BoxFit.fitWidth,
         ),
       ),
     ));
   }
 
-  Row bottomWidget(Size size) {
-    return Row(
-      children: [
-        Expanded(
-          child: RoundedButtonWidget(
-            size: size,
-            onPressed: () {
-              setState(() {
-                int random = Random().nextInt(8) + 1;
-                generateImageNumber = random;
-                DatabaseServices.updateFruits(
-                    number: generateImageNumber.toString());
-              });
-            },
-            icon: Image.asset(
-              kFruit,
-              width: 90,
-            ),
-          ),
+  Expanded generateRandomFruit(Size size) {
+    return Expanded(
+      child: RoundedButtonWidget(
+        size: size,
+        onPressed: () {
+          setState(() {
+            //generate a random fruit
+            int random = Random().nextInt(8) + 1;
+            generateImageNumber = random;
+            DatabaseServices.updateFruits(
+                number: generateImageNumber.toString());
+          });
+        },
+        icon: Image.asset(
+          kFruit,
+          width: 90,
         ),
-        Expanded(
-          child: RoundedButtonWidget(
-            size: size,
-            color: Colors.green,
-            onPressed: () {
-              setState(() {
-                generateImageNumber = 0;
-                DatabaseServices.updateFruits(
-                    number: generateImageNumber.toString());
-              });
-            },
-            icon: Image.asset(
-              kEat,
-              width: 90,
-            ),
-          ),
+      ),
+    );
+  }
+
+  Expanded makeFruitDisppear(Size size) {
+    return Expanded(
+      child: RoundedButtonWidget(
+        size: size,
+        color: Colors.green,
+        onPressed: () {
+          setState(() {
+            generateImageNumber = 0;
+            DatabaseServices.updateFruits(
+                number: generateImageNumber.toString());
+          });
+        },
+        icon: Image.asset(
+          kEat,
+          width: 90,
         ),
-      ],
+      ),
     );
   }
 }

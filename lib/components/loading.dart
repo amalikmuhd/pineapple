@@ -8,9 +8,10 @@ class Loading extends StatelessWidget {
     return Container(
         color: Colors.white,
         child: const Center(
-            child: SpinKitRipple(
-          color: Colors.red,
-          size: 50.0,
-        )));
+          child: SpinKitRipple(
+            color: Colors.red,
+            size: 50.0,
+          ),
+        ));
   }
 }
